@@ -4,8 +4,23 @@ using UnityEngine;
 
 public class Ghost : MonoBehaviour {
 
+    //透過度
     float alpha;
-    float speed = 0.01f;
+
+    //透過度をいじる速さ
+    float alphaSpd = 0.01f;
+
+    //お化けムーブの速度
+    float speed;
+
+    //左右を決めるやつ
+    float dir;
+
+    //コサインカーブのやつ
+    float cosSpd = 2f;
+    float range = 0.2f;
+
+    //色のやつ
     float red, green, blue;
 
     //移動ベクトル
@@ -14,6 +29,7 @@ public class Ghost : MonoBehaviour {
     //フェードの切り替え
     private bool trg = false;
 
+    //消え始めるまでの時間
     public float time = 5;
 
     void Start()
@@ -21,7 +37,15 @@ public class Ghost : MonoBehaviour {
         red = GetComponent<SpriteRenderer>().color.r;
         green = GetComponent<SpriteRenderer>().color.g;
         blue = GetComponent<SpriteRenderer>().color.b;
+        
+        //お化けムーブの速さ
+        speed = Random.Range(0.0005f, 0.001f);
 
+        //左右を決める
+        dir = Random.Range(0,2);
+        dir = Mathf.Floor(dir);
+
+        //消え始めるまでの時間
         time = 5;
     }
 
@@ -30,30 +54,34 @@ public class Ghost : MonoBehaviour {
         //色の設定のやつ
         GetComponent<SpriteRenderer>().color = new Color(red, green, blue, alpha);
 
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
-            velocity.x += speed;
-        }
-        if (Input.GetKey(KeyCode.LeftArrow))
+        velocity.y = Mathf.Cos(Time.time * cosSpd) * range;
+        
+        //座標更新
+        transform.position += velocity;
+
+        //透過度の設定のやつ
+        Alpha();
+
+        //動きだすやつ
+        Direction();
+
+    }
+
+    void Direction()
+    {
+        
+        if (dir == 0)
         {
             velocity.x += -speed;
+        }
+        else
+        {
+            velocity.x += speed;
         }
 
         //座標更新
         transform.position += velocity;
-
-        //動いてるx軸の方向を向くやつ
-        Direction();
-
-        //透過度の設定のやつ
-        Alpha();
         
-    }
-
-
-
-    void Direction()
-    {
         if (GetDirection().x > 0)
         {
             //右向き
@@ -71,6 +99,7 @@ public class Ghost : MonoBehaviour {
 
         time -= Time.deltaTime;
 
+        //消え始めるまでの時間が0になった時
         if (time <= 0)
         {
             trg = true;
@@ -78,13 +107,14 @@ public class Ghost : MonoBehaviour {
 
         if (trg == false)
         {
-            alpha += speed;
+            alpha += alphaSpd;
         }
         else
         {
-            alpha -= speed;
+            alpha -= alphaSpd;
         }
 
+        //見えなくなったら消す
         if(trg == true && alpha <= 0)
         {
             Destroy(this.gameObject);
