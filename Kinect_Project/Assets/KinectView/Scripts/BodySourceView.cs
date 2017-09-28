@@ -11,7 +11,9 @@ public class BodySourceView : MonoBehaviour
 
     public float timeElapsed = 0;
 
-    private Vector3[] bodyPos = new Vector3[25];
+    public int batcnt = 0;
+
+    public static Vector3[] bodyPos = new Vector3[25];
     private ulong active = 0;
     
     private Dictionary<ulong, GameObject> _Bodies = new Dictionary<ulong, GameObject>();

@@ -7,14 +7,13 @@ public class Spone : MonoBehaviour {
     public GameObject ghost;
     public GameObject batsR;
     public GameObject batsL;
-    public GameObject Pumpkin;
-    public GameObject Candy;
 
     public bool trgGhost = false;
     public bool trgBatsR = false;
     public bool trgBatsL = false;
-    public bool trgPumpkin = false;
-    public bool trgCandy = false;
+
+    public static int BatRcnt = 0;  //コウモリの出ている数
+    public static int BatLcnt = 0;
 
     private float x = 0;
     private float y = 0;
@@ -45,7 +44,7 @@ public class Spone : MonoBehaviour {
                 {
 
                     x = Random.Range(-120f, 120f);
-                    y = Random.Range(-60f, 60f);
+                    y = Random.Range(-120f, 120f);
                     z = 149f;
 
                     Instantiate(ghost, new Vector3(x, y, z), Quaternion.identity);
@@ -57,14 +56,17 @@ public class Spone : MonoBehaviour {
             if (trgBatsR == true)
             {
 
-                for (int i = 0; i <= 2; i++)
+                for (int i = 0; i <= 0; i++)
                 {
+                    if (BatRcnt < 1)
+                    {
+                        x = 15;
+                        y = Random.Range(5, 7);
+                        z = 1f;
 
-                    x = Random.Range(-120f, 120f);
-                    y = Random.Range(-60f, 60f);
-                    z = 149f;
-
-                    Instantiate(batsR, new Vector3(x, y, z), Quaternion.identity);
+                        Instantiate(batsR, new Vector3(x, y, z), Quaternion.identity);
+                        BatRcnt++;
+                    }
                 }
 
                 trgBatsR = false;
@@ -73,14 +75,17 @@ public class Spone : MonoBehaviour {
             if (trgBatsL == true)
             {
 
-                for (int i = 0; i <= 2; i++)
+                for (int i = 0; i <= 0; i++)
                 {
+                    if (BatLcnt < 1)
+                    {
+                        x = -15;
+                        y = Random.Range(5,7);
+                        z = 1f;
 
-                    x = Random.Range(-120f, 120f);
-                    y = Random.Range(-60f, 60f);
-                    z = 149f;
-
-                    Instantiate(batsL, new Vector3(x, y, z), Quaternion.identity);   
+                        Instantiate(batsL, new Vector3(x, y, z), Quaternion.identity);
+                        BatLcnt++;
+                    }
                 }
 
                 trgBatsL = false;
