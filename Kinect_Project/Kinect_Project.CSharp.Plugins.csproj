@@ -78,17 +78,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Standard Assets\CameraIntrinsics.cs" />
-    <Compile Include="Assets\Standard Assets\CollectionMap.cs" />
-    <Compile Include="Assets\Standard Assets\EventPump.cs" />
-    <Compile Include="Assets\Standard Assets\ExceptionHelper.cs" />
-    <Compile Include="Assets\Standard Assets\INativeWrapper.cs" />
-    <Compile Include="Assets\Standard Assets\KinectBuffer.cs" />
-    <Compile Include="Assets\Standard Assets\KinectSpecialCases.cs" />
-    <Compile Include="Assets\Standard Assets\NativeObjectCache.cs" />
-    <Compile Include="Assets\Standard Assets\NativeWrapper.cs" />
-    <Compile Include="Assets\Standard Assets\SmartGCHandle.cs" />
-    <Compile Include="Assets\Standard Assets\ThreadSafeDictionary.cs" />
+    <Compile Include="Assets\Standard Assets\Scripts\CameraIntrinsics.cs" />
+    <Compile Include="Assets\Standard Assets\Scripts\CollectionMap.cs" />
+    <Compile Include="Assets\Standard Assets\Scripts\EventPump.cs" />
+    <Compile Include="Assets\Standard Assets\Scripts\ExceptionHelper.cs" />
+    <Compile Include="Assets\Standard Assets\Scripts\INativeWrapper.cs" />
+    <Compile Include="Assets\Standard Assets\Scripts\KinectBuffer.cs" />
+    <Compile Include="Assets\Standard Assets\Scripts\KinectSpecialCases.cs" />
+    <Compile Include="Assets\Standard Assets\Scripts\NativeObjectCache.cs" />
+    <Compile Include="Assets\Standard Assets\Scripts\SmartGCHandle.cs" />
+    <Compile Include="Assets\Standard Assets\Scripts\ThreadSafeDictionary.cs" />
     <Compile Include="Assets\Standard Assets\Windows\Data\PropertyChangedEventArgs.cs" />
     <Compile Include="Assets\Standard Assets\Windows\Kinect\Activity.cs" />
     <Compile Include="Assets\Standard Assets\Windows\Kinect\Appearance.cs" />
